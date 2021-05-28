@@ -1,0 +1,35 @@
+<script lang="ts" src="./app.ts"></script>
+
+<style lang="less">
+/* 此处编写全局样式 */
+@import './assets/less/global.less';
+</style>
+
+<script type="application/json">
+{
+  "pages": ["./pages/index"],
+  "window": {
+    "navigationBarTitleText": "mpx",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#F8F9FB"
+  },
+  "debug": true,
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 30000
+  }
+}
+</script>
+
+<!--也可以通过以下形式用js输出json，便于书写注释和使用条件编译-->
+
+<!--<script name="json">-->
+<!--  // 可以写注释，通过defs注入的常量做一些判断之类的操作-->
+<!--  module.exports = {-->
+<!--    pages: [-->
+<!--      './pages/index'-->
+<!--    ]-->
+<!--  }-->
+<!--</script>-->
