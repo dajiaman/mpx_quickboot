@@ -1,0 +1,25 @@
+<template>
+  <button
+    class="get-userinfo-button"
+    wx:if="{{ canIUseGetUserProfilePermission }}"
+    bindtap="bindGetUserProfile"
+  >
+    <slot></slot>
+  </button>
+  <button
+    class="get-userinfo-button"
+    wx:else
+    open-type="getUserInfo"
+    bindgetuserinfo="bindGetUserInfo"
+  >
+    <slot></slot>
+  </button>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<script type="application/json">
+{
+  "component": true
+}
+</script>

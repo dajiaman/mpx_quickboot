@@ -1,0 +1,18 @@
+<template>
+  <phone-container bind:getphonenumber="phonAuthTap">
+    <view>微信手机号登录</view>
+  </phone-container>
+
+  <button>账号登录</button>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<script type="application/json">
+{
+  "usingComponents": {
+    "phone-container": "../../components/phoneContainer/index",
+    "user-container": "../../components/userContainer/index"
+  }
+}
+</script>

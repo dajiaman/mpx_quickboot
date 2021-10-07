@@ -31,6 +31,7 @@ if (!modeArr.length) modeArr.push(userConf.srcMode)
 let webpackConfs = []
 
 modeArr.forEach((mode) => {
+  console.log('编译mode', mode)
   const options = Object.assign({}, userConf, {
     mode,
     production: program.production,

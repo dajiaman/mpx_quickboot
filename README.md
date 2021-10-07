@@ -1,17 +1,25 @@
+<h1 align="center">A mpx project</h1>
+<p align="center">mpx小程序快速开发模板</p>
 
-> A mpx project
 
-## Dev
+
+
+## get started
 
 ```bash
-# install dep
-npm i
+# install dependencies
+npm install
 
 # for dev
 npm run watch
 
-# for online
+# for production environment
 npm run build
+```
+
+``` bash
+# web 调试
+npm run watch:web:serve
 ```
 
 npm script规范 [build|watch]:[dev|prod]:[cross|web|none]

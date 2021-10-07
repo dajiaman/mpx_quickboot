@@ -37,6 +37,9 @@ if (userConf.tsSupport) {
       rules: {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-this-alias": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
+
         // since we target ES2015 for baseline support, we need to forbid object
         // rest spread usage (both assign and destructure)
         "no-restricted-syntax": [

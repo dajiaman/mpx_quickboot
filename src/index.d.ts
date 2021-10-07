@@ -7,3 +7,9 @@ declare module '*?resolve' {
   const resourcePath: string
   export default resourcePath
 }
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+    MODE: string;
+  }
+}

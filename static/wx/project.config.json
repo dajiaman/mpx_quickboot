@@ -2,7 +2,7 @@
   "compileType": "miniprogram",
   "setting": {
     "newFeature": true,
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": false,
     "postcss": false,
     "minified": false,
@@ -10,7 +10,7 @@
     "autoAudits": false
   },
   "appid": "touristappid",
-  "projectname": "yx_miniapp",
+  "projectname": "mpx_miniapp",
   "description": "A mpx project",
   "condition": {}
 }

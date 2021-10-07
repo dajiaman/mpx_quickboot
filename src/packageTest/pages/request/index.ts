@@ -1,7 +1,8 @@
 import { createPage } from '@mpxjs/core'
 
 createPage({
+  data: {},
   onLoad () {
-    // onLoad
+    console.log('请求测试')
   }
 })

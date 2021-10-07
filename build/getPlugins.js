@@ -73,7 +73,9 @@ module.exports = function getRules (options) {
 
   plugins.push(new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: production ? '"production"' : '"development"'
+      // 定义环境
+      MODE: JSON.stringify(process.env.MODE),
+      NODE_ENV: JSON.stringify(production ? '"production"' : '"development"')
     }
   }))
 

@@ -12,7 +12,15 @@ module.exports = {
     'function-url-quotes': 'always',
     'font-family-no-missing-generic-family-keyword': null, // iconfont
     'plugin/declaration-block-no-ignored-properties': true,
-    'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }]
+    'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
+    'selector-type-no-unknown': [
+      true,
+      {
+        'ignoreTypes': [
+          '/page/'
+        ]
+      }
+    ]
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts']
 }

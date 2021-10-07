@@ -1,9 +1,13 @@
+const path = require('path')
 module.exports = {
   performance: {
     hints: false
   },
   mode: 'none',
   resolve: {
+    alias: {
+      '@': path.join(__dirname, '../src')
+    },
     extensions: ['.mpx', '.js', '.wxml', '.vue', '.ts'],
     modules: ['node_modules']
   },

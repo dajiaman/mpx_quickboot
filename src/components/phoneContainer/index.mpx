@@ -1,0 +1,41 @@
+<template>
+  <button
+    class="get-phone-button"
+    open-type="getPhoneNumber"
+    bindgetphonenumber="getPhoneNumber"
+    hover-class="none"
+    disabled="{{disabled}}"
+  >
+    <slot></slot>
+  </button>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<style lang="less">
+  .get-phone-button {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 184px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 24px;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    background-color: #07c160;
+    border-radius: 20px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+</style>
+
+<script type="application/json">
+{
+  "component": true
+}
+</script>

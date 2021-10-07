@@ -1,0 +1,13 @@
+<template>
+  <view>个人中心</view>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<script type="application/json">
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {},
+  "enablePullDownRefresh": true
+}
+</script>

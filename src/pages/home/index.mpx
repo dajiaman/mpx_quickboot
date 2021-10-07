@@ -1,0 +1,19 @@
+<template>
+    <auth-flow-popup id="auth-flow-popup"></auth-flow-popup>
+    <list></list>
+    <button bindtap="tap">跳转到请求测试页</button>
+    <button bindtap="bindAuth">授权</button>
+
+    <button bindtap="goToUcenter">跳转个人中心</button>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<script type="application/json">
+{
+  "usingComponents": {
+    "list": "../../components/list",
+    "base-page": "../../components/basePage/index"
+  }
+}
+</script>

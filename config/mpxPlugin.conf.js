@@ -43,6 +43,35 @@ module.exports = {
   // 是否生成用于测试的源文件/dist的映射表
   generateBuildMap: userConf.needUnitTest
 
+  // https://mpxjs.cn/guide/advance/size-report.html#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95
+  // 包体积分析
+  // reportSize: {
+  //   // 体积报告生成后输出的文件地址名，路径相对为 dist/wx 或者 dist/ali
+  //   filename: '../report.json',
+  //   // 配置阈值，此处代表总包体积阈值为 16MB，分包体积阈值为 2MB，超出将会触发编译报错提醒，该报错不阻断构建
+  //   threshold: {
+  //     size: '16MB',
+  //     packages: '2MB'
+  //   },
+  //   groups: [
+  //     {
+  //       // 分组名称
+  //       name: 'vant',
+  //       // 配置分组 entry 匹配规则，小程序中所有的页面和组件都可被视为 entry，如下所示的分组配置将计算项目中引入的 vant 组件带来的体积占用
+  //       entryRules: {
+  //         include: '@vant/weapp'
+  //       }
+  //     },
+  //     // 不管用
+  //     {
+  //       name: 'sentry',
+  //       entryRules: {
+  //         include: ['sentry-miniapp', '@sentry/core', '@sentry/utils', '@sentry/types']
+  //       }
+  //     }
+  //   ]
+  // }
+
   // 多语言i18n能力 以下是简单示例，更多详情请参考文档：https://didi.github.io/mpx/i18n.html
   // i18n: {
   //   locale: 'en-US',

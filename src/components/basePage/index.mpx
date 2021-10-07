@@ -1,0 +1,18 @@
+<template>
+  <view class="base-page">
+    <auth-flow-popup id="auth-flow-popup"></auth-flow-popup>
+
+    <slot></slot>
+  </view>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<script type="application/json">
+{
+  "component": true,
+  "usingComponents": {
+    "auth-flow-popup": "../authFlowPopup/index"
+  }
+}
+</script>

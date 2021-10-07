@@ -1,35 +1,64 @@
 <script lang="ts" src="./app.ts"></script>
 
 <style lang="less">
-/* 此处编写全局样式 */
-@import './assets/less/global.less';
+@import "./styles/global.less";
 </style>
 
-<script type="application/json">
-{
-  "pages": ["./pages/index"],
-  "window": {
-    "navigationBarTitleText": "mpx",
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
-    "backgroundTextStyle": "dark",
-    "backgroundColor": "#F8F9FB"
+<script name="json">
+// 可以写注释，通过defs注入的常量做一些判断之类的操作-->
+module.exports = {
+  pages: ['./pages/home/index', './pages/login/index', './pages/ucenter/index', './pages/webview/index'],
+  // 小程序原生分包 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#subpackages
+  // https://blog.csdn.net/GuanJdoJ/article/details/109313553
+  packages: [
+    './packageTest/index?root=packageTest&name=test'
+  ],
+  'usingComponents': {
+    'auth-flow-popup': './components/authFlowPopup/index'
   },
-  "debug": true,
-  "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 30000
-  }
+  window: {
+    // https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#window
+    // 导航栏标题
+    navigationBarTitleText: 'mpx',
+    // 导航栏颜色
+    navigationBarBackgroundColor: '#ffffff',
+    // 导航栏文字主题 black white
+    navigationBarTextStyle: 'black',
+    // 导航栏样式，仅支持以下值： default 默认样式custom 自定义导航栏，只保留右上角胶囊按钮
+    navigationStyle: 'default',
+    // 下拉 loading 的样式，仅支持 dark / light
+    backgroundTextStyle: 'dark',
+    // 窗口的背景色
+    backgroundColor: '#F8F9FB',
+    // https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onpulldownrefresh
+    // 是否开启全局的下拉刷新。
+    enablePullDownRefresh: false,
+    // 页面上拉触底事件触发时距页面底部距离，单位为 px。
+    onReachBottomDistance: 50,
+    // 屏幕旋转设置，支持 auto / portrait / landscape , 默认portrait
+    pageOrientation: 'portrait'
+  },
+  debug: true,
+  networkTimeout: {
+    // https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#networkTimeout
+    // wx.request 的超时时间，单位：毫秒。
+    request: 10000,
+    // wx.connectSocket 的超时时间，单位：毫秒。
+    connectSocket: 60000,
+    // wx.uploadFile 的超时时间，单位：毫秒。
+    uploadFile: 60000,
+    // wx.downloadFile 的超时时间，单位：毫秒。
+    downloadFile: 30000
+  },
+  // requiredBackgroundModes: ['audio', 'location'],
+  // 权限 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission
+  // 'permission': {
+  //   'scope.userLocation': {
+  //     'desc': '你的位置信息将用于小程序位置服务'
+  //   }
+  // },
+  // 深色模式 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#darkmode
+  // 为true 时才可以监听到变化， darkmode 为true 时会影响到原生组件的样式
+  darkmode: false
 }
 </script>
-
-<!--也可以通过以下形式用js输出json，便于书写注释和使用条件编译-->
-
-<!--<script name="json">-->
-<!--  // 可以写注释，通过defs注入的常量做一些判断之类的操作-->
-<!--  module.exports = {-->
-<!--    pages: [-->
-<!--      './pages/index'-->
-<!--    ]-->
-<!--  }-->
-<!--</script>-->

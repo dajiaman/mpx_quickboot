@@ -1,0 +1,22 @@
+<template>
+  <web-view
+    src="{{ url }}"
+    bindmessage="onReciveMessage"
+    bindload="onWebViewLoad"
+    binderror="onWebViewError"
+  ></web-view>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<style lang="less">
+page {
+  background-color: #fff;
+}
+</style>
+
+<script type="application/json">
+{
+  "backgroundColor": "#ffffff"
+}
+</script>

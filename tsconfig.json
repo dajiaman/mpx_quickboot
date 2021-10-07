@@ -2,20 +2,24 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "experimentalDecorators": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable"
-    ]
+    "allowJs": true,
+    "baseUrl": "./",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "/#/*": ["types/*"]
+    },
   },
-  "exclude": [
-    "build",
-    "dist",
-    "config",
-    "./node_modules"
-  ]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+  ],
+  "exclude": ["build", "dist", "config", "./node_modules"]
 }

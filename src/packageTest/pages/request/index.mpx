@@ -1,13 +1,12 @@
 <template>
-  <list></list>
+  <view></view>
 </template>
 
 <script lang="ts" src="./index.ts"></script>
 
 <script type="application/json">
-  {
-    "usingComponents": {
-      "list": "../components/list"
-    }
-  }
+{
+  "navigationBarTitleText": "请求测试",
+  "usingComponents": {},
+}
 </script>

@@ -6,7 +6,7 @@ const baseRules = [
   {
     test: /\.js$/,
     loader: 'babel-loader',
-    include: [resolve('src'), resolve('test'), resolve('node_modules/@mpxjs')]
+    include: [resolve('src'), resolve('test'), resolve('node_modules/@mpxjs'), resolve('node_modules/wxapp-router')]
   },
   {
     test: /\.json$/,
