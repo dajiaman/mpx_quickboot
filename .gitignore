@@ -5,6 +5,7 @@ deploy/
 output/
 dist/
 
+.yarn.lock
 # Log files
 npm-debug.log*
 npm-error.log*
