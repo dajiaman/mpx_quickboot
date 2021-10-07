@@ -12,7 +12,7 @@ const fetchCanceler = new FetchCanceler()
 
 // 请求拦截器
 mpx.xfetch.interceptors.request.use(
-  async (request) => {
+  async request => {
     console.log('request', request)
     // 处理 header undefined
     if (request.header === undefined) {
@@ -37,9 +37,16 @@ mpx.xfetch.interceptors.request.use(
       }
     }
 
-    // 在请求需要登录态的时候
+    // 在请求需要登录态的时候 且 没有登录态
     if (request.needLogin === true && !getAuthToken()) {
-      await session.ensureSessionKey()
+      try {
+        await session.ensureSessionKey()
+      } catch (err) {
+        console.error(
+          'request interceptors  Session ensureSessionKey function invoke error',
+          err
+        )
+      }
 
       // 登录成功后，获取 token，通过 headers 传递给后端。
       request['header']['auth-token'] = getAuthToken()
@@ -56,44 +63,49 @@ mpx.xfetch.interceptors.request.use(
 // 结果拦截器
 mpx.xfetch.interceptors.response.use(
   async response => {
-    // 从队列中移除
-    response && fetchCanceler.removePending(response.requestConfig)
-    console.log(
-      '%c Request Success:',
-      'color: #4CAF50; font-weight: bold',
-      response
-    )
-    const res = response.data
+    try {
+      // 从队列中移除
+      response && fetchCanceler.removePending(response.requestConfig)
+      console.log(
+        '%c Request Success:',
+        'color: #4CAF50; font-weight: bold',
+        response
+      )
+      const res = response.data
 
-    const hasCode = res && Reflect.has(res, 'code')
+      const hasCode = res && Reflect.has(res, 'code')
 
-    if (!hasCode) {
-      // it is judged as an error.
-      return Promise.reject(new Error('请求错误'))
+      if (!hasCode) {
+        // it is judged as an error.
+        return Promise.reject(new Error('请求错误'))
+      }
+
+      //  这里 code，data，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
+      const { code, message } = res
+
+      // 登录态过期或失效
+      if ([ResultEnum.AUTH_EXPIRED, ResultEnum.AUTH_INVALID].includes(code)) {
+        // 刷新登录态
+        await session.refreshLogin()
+
+        // 然后重新发起请求
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        return request.done(response.requestConfig)
+      }
+
+      // 是否请求成功
+      const hasSuccess = code === ResultEnum.SUCCESS
+
+      if (hasSuccess) {
+        // 成功时返回结果
+        return res
+      }
+
+      return Promise.reject(new Error(message))
+    } catch (error) {
+      console.error(error)
+      return Promise.reject(new Error(error.message))
     }
-
-    //  这里 code，data，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-    const { code, message } = res
-
-    // 登录态过期或失效
-    if ([ResultEnum.AUTH_EXPIRED, ResultEnum.AUTH_INVALID].includes(code)) {
-      // 刷新登录态
-      await session.refreshLogin()
-
-      // 然后重新发起请求
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      return request.done(response.requestConfig)
-    }
-
-    // 是否请求成功
-    const hasSuccess = code === ResultEnum.SUCCESS
-
-    if (hasSuccess) {
-      // 成功时返回结果
-      return res
-    }
-
-    return Promise.reject(new Error(message))
   },
   (error: any) => {
     // 隐藏loading

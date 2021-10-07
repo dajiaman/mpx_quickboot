@@ -1,10 +1,7 @@
 <h1 align="center">A mpx project</h1>
 <p align="center">mpx小程序快速开发模板</p>
 
-
-
-
-## get started
+## 快速开始
 
 ```bash
 # install dependencies
@@ -17,7 +14,7 @@ npm run watch
 npm run build
 ```
 
-``` bash
+```bash
 # web 调试
 npm run watch:web:serve
 ```

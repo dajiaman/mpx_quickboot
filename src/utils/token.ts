@@ -12,7 +12,7 @@ export function saveAuthToken (token: string) {
 
 /**
  * 获取 auth-token
- * @param token
+ * @returns {String|Undefined} 返回AuthToken
  */
 export function getAuthToken (): string | undefined {
   return storage.get(TOKEN_KEY) ? storage.get(TOKEN_KEY) : undefined
